@@ -298,7 +298,6 @@ def test_render_html_compat_cell_empty_class_when_zero():
 def test_render_html_runtime_filter_js_present():
     html = _render_fixture_html()
     assert "RUNTIME_COLS" in html
-    assert "STATE_REGEX" in html
     assert "STATE_TO_STATUS" in html
     assert "runtime-name-cell" in html
 

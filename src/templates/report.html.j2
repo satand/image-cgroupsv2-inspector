@@ -143,35 +143,31 @@ section { margin: 30px 0; }
       {% endif %}
       {% endmacro %}
       <table class="compat-summary">
-        <thead><tr><th>Runtime</th><th>Compatible</th><th>Incompatible</th><th>Needs review</th><th>N/A</th></tr></thead>
+        <thead><tr><th>Runtime</th><th>Compatible</th><th>Incompatible</th><th>Needs review</th></tr></thead>
         <tbody>
           <tr>
             <td class="filterable-cell runtime-name-cell" data-runtime="java" tabindex="0" role="button">Java</td>
             {{ compat_cell('java', 'yes', summary.by_compatibility.java.yes) }}
             {{ compat_cell('java', 'no', summary.by_compatibility.java.no) }}
             {{ compat_cell('java', 'unknown', summary.by_compatibility.java.unknown) }}
-            {{ compat_cell('java', 'na', summary.by_compatibility.java.na) }}
           </tr>
           <tr>
             <td class="filterable-cell runtime-name-cell" data-runtime="node" tabindex="0" role="button">Node.js</td>
             {{ compat_cell('node', 'yes', summary.by_compatibility.node.yes) }}
             {{ compat_cell('node', 'no', summary.by_compatibility.node.no) }}
             {{ compat_cell('node', 'unknown', summary.by_compatibility.node.unknown) }}
-            {{ compat_cell('node', 'na', summary.by_compatibility.node.na) }}
           </tr>
           <tr>
             <td class="filterable-cell runtime-name-cell" data-runtime="dotnet" tabindex="0" role="button">.NET</td>
             {{ compat_cell('dotnet', 'yes', summary.by_compatibility.dotnet.yes) }}
             {{ compat_cell('dotnet', 'no', summary.by_compatibility.dotnet.no) }}
             {{ compat_cell('dotnet', 'unknown', summary.by_compatibility.dotnet.unknown) }}
-            {{ compat_cell('dotnet', 'na', summary.by_compatibility.dotnet.na) }}
           </tr>
           <tr>
             <td class="filterable-cell runtime-name-cell" data-runtime="go" tabindex="0" role="button">Go</td>
             {{ compat_cell('go', 'yes', summary.by_compatibility.go.yes) }}
             {{ compat_cell('go', 'no', summary.by_compatibility.go.no) }}
             {{ compat_cell('go', 'needs_review', summary.by_compatibility.go.needs_review) }}
-            {{ compat_cell('go', 'none', summary.by_compatibility.go.none) }}
           </tr>
         </tbody>
       </table>
@@ -544,29 +540,11 @@ $(document).ready(function() {
   // ============================================================
   var RUNTIME_COLS = { java: 2, node: 3, dotnet: 4, go: 5 };
   var RUNTIME_LABELS = { java: 'Java', node: 'Node.js', dotnet: '.NET', go: 'Go' };
-  var STATE_REGEX = {
-    yes: '^Yes',
-    no: '^No',
-    unknown: '^Unknown',
-    needs_review: '^Needs Review',
-    na: '^N/A',
-    none: '^None',
-  };
-  var STATE_LABELS = {
-    yes: 'Yes',
-    no: 'No',
-    unknown: 'Unknown',
-    needs_review: 'Needs review',
-    na: 'N/A',
-    none: 'None',
-  };
   var STATE_TO_STATUS = {
     yes: 'compatible',
     no: 'incompatible',
     unknown: 'needs_review',
     needs_review: 'needs_review',
-    na: 'not_applicable',
-    none: 'not_applicable',
   };
 
   $('.runtime-name-cell').on('click', function() {
